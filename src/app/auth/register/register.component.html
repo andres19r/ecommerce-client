@@ -1,1 +1,62 @@
-<p>register works!</p>
+<section class="register-container">
+  <div class="register-container__content">
+    <h2>REGISTER</h2>
+    <form
+      (submit)="onSubmit()"
+      [formGroup]="regiterForm"
+      class="register-container__form"
+    >
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input formControlName="firstName" matInput />
+          <mat-icon matIconPrefix>person</mat-icon>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input formControlName="lastName" matInput />
+          <mat-icon matIconPrefix>person</mat-icon>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>City</mat-label>
+          <input formControlName="city" matInput />
+          <mat-icon matIconPrefix>location_city</mat-icon>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input formControlName="email" matInput />
+          <mat-icon matIconPrefix>mail</mat-icon>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-icon matIconPrefix>key</mat-icon>
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hide() ? 'password' : 'text'" />
+          <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="toggleVisibility($event)"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide()"
+          >
+            <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+        </mat-form-field>
+      </p>
+      <button type="submit" [disabled]="regiterForm.invalid" mat-flat-button>
+        REGISTER
+      </button>
+    </form>
+    <div class="register-container__login">
+      <p>Already have an account? <a routerLink="/auth/login">Log In</a></p>
+    </div>
+  </div>
+</section>
