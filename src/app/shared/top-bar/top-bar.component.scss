@@ -1,0 +1,26 @@
+.top-bar {
+  background: brown;
+  height: 50px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  &__title {
+    width: 30%;
+    font-size: 25px;
+  }
+
+  &__menu {
+    width: 50%;
+    a {
+      margin-right: 15px;
+    }
+  }
+
+  &__cart {
+    width: 20%;
+  }
+}
+
