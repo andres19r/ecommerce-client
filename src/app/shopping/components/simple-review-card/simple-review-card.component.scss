@@ -1,0 +1,12 @@
+.simple-review-card {
+  border-radius: 20px;
+  width: 600px;
+  height: 100px;
+  padding: 10px;
+  background-color: white;
+  &__author {
+    margin-top: 20px;
+    margin-right: 20px;
+    text-align: end;
+  }
+}

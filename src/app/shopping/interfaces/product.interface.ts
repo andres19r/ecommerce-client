@@ -4,3 +4,8 @@ export interface SimpleProduct {
   price: number;
   img: string;
 }
+
+export interface SimpleReview {
+  content: string;
+  author: string;
+}
