@@ -1,1 +1,42 @@
-<p>welcome works!</p>
+<section class="hero">
+  <div>
+    <p class="hero__title">Bienvenido a Dulces Ilusiones</p>
+    <p class="hero__slogan">Un mundo lleno de sabor</p>
+  </div>
+</section>
+
+<section class="products">
+  @for (product of products; track product) {
+  <app-simple-product-card [product]="product" />
+  }
+</section>
+
+<section class="reviews">
+  <h3>Happy Customers</h3>
+  <div class="reviews__container">
+    @for (review of reviews; track review) {
+    <app-simple-review-card [review]="review" />
+    }
+  </div>
+</section>
+
+<section class="newsletter">
+  <h3>Stay Updated!</h3>
+  <p>Join our newsletter to get the latest updates and offers.</p>
+  <div class="example-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your email</mat-label>
+      <input
+        matInput
+        placeholder="email@example.com"
+        [formControl]="email"
+        (blur)="updateErrorMessage()"
+        required
+      />
+      @if (email.invalid) {
+      <mat-error>{{errorMessage()}}</mat-error>
+      }
+    </mat-form-field>
+    <button mat-flat-button>Basic</button>
+  </div>
+</section>
