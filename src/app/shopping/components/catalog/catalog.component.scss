@@ -1,0 +1,14 @@
+.catalog {
+  margin: 30px;
+
+  h1 {
+    font-size: 40px;
+  }
+}
+
+.categories {
+  &__cards {
+    display: flex;
+    gap: 20px;
+  }
+}

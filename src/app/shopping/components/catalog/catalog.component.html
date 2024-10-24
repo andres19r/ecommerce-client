@@ -1,1 +1,13 @@
-<p>catalog works!</p>
+<section class="catalog">
+  <h1>Catálogo</h1>
+  <div class="categories">
+    @for (category of categories(); track category) {
+      <h2>- {{ category.name | titlecase }}</h2>
+      <div class="categories__cards">
+        @for (product of category.products; track product) {
+          <app-product-card [product]="product" />
+        }
+      </div>
+    }
+  </div>
+</section>
