@@ -1,0 +1,39 @@
+.about-us {
+  text-align: center;
+
+  h1 {
+    font-size: 50px;
+    color: brown;
+  }
+
+  &__description {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  &__info {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    &__card {
+      margin-top: 15px;
+      width: 500px;
+      height: 400px;
+
+      &__img-container {
+        height: 120px;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+
+        img {
+          width: 120px;
+          height: 120px;
+        }
+      }
+
+    }
+  }
+}
