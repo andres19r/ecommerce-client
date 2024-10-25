@@ -29,7 +29,13 @@
       </div>
 
       <p class="btn">
-        <button mat-flat-button [disabled]="totalBalance() <= 0">Realizar Compra</button>
+        <button
+          (click)="createOrder()"
+          mat-flat-button
+          [disabled]="totalBalance() <= 0"
+        >
+          Realizar Compra
+        </button>
       </p>
     </div>
   </div>

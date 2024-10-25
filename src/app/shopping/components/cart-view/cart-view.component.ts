@@ -5,6 +5,8 @@ import { CartResponse } from '../../interfaces/cart.interface';
 import { CartService } from '../../services/cart.service';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { OrderService } from '../../services/order.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-view',
@@ -16,6 +18,8 @@ import { MatButtonModule } from '@angular/material/button';
 export class CartViewComponent {
   private readonly authService = inject(AuthService);
   private readonly cartService = inject(CartService);
+  private readonly orderService = inject(OrderService);
+  private readonly router = inject(Router);
   cart: Signal<CartResponse> = this.cartService.getUserCart();
   totalBalance = computed(() => {
     let totalBalance = 0;
@@ -27,5 +31,12 @@ export class CartViewComponent {
 
   get user() {
     return this.authService.user;
+  }
+
+  createOrder() {
+    this.orderService.createOrder('cash', 'store').subscribe(resp => {
+      // this.router.navigateByUrl('/catalog')
+      window.location.reload()
+    })
   }
 }
