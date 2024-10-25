@@ -19,6 +19,11 @@ export class CartItemComponent {
   constructor() {}
 
   updateProduct(productId: string, newQuantity: number): void {
+    if (newQuantity === 0) {
+      this.removeProduct(productId);
+      return;
+    }
+
     this.cartService.updateCartItem(productId, newQuantity);
   }
 

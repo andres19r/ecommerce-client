@@ -1,5 +1,9 @@
 .catalog {
-  margin: 30px;
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  justify-content: center;
+  margin-bottom: 40px;
 
   h1 {
     font-size: 40px;

@@ -25,11 +25,11 @@
       <hr />
       <div class="balance">
         <p class="balance__title">Total</p>
-        <p class="balance__total">{{ totalBalance() }}</p>
+        <p class="balance__total">{{ totalBalance() | currency }}</p>
       </div>
 
       <p class="btn">
-        <button mat-flat-button>Realizar Compra</button>
+        <button mat-flat-button [disabled]="totalBalance() <= 0">Realizar Compra</button>
       </p>
     </div>
   </div>
