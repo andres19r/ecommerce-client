@@ -1,23 +1,54 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { CartResponse } from '../interfaces/cart.interface';
+import { CartItem, CartResponse } from '../interfaces/cart.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private baserUrl: string = `${environment.baseUrl}/cart`;
+  private baseUrl: string = `${environment.baseUrl}/cart`;
   private readonly http = inject(HttpClient);
+  private token = localStorage.getItem('token');
 
-  constructor() {}
+  private userCart: WritableSignal<CartResponse> = signal({} as CartResponse);
+
+  constructor() {
+    this.loadUserCart();
+  }
+
+  private loadUserCart() {
+    const headers = new HttpHeaders().set(
+      'Authorization',
+      'Bearer ' + this.token,
+    );
+    this.http
+      .get<CartResponse>(this.baseUrl, { headers })
+      .subscribe((response) => this.userCart.set(response));
+  }
 
   getUserCart() {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
-    return toSignal(this.http.get<CartResponse>(this.baserUrl, { headers }), {
-      initialValue: {} as CartResponse,
-    });
+    return this.userCart;
+  }
+
+  updateCartItem(productId: string, newQuantity: number) {
+    const body = { productId, newQuantity };
+    const headers = new HttpHeaders().set(
+      'Authorization',
+      'Bearer ' + this.token,
+    );
+
+    return this.http
+      .put<CartItem>(this.baseUrl, body, { headers })
+      .subscribe((updatedItem) => {
+        const currentCart = this.userCart();
+
+        const updatedCartItems = currentCart.cartItems.map((item) =>
+          item.id === updatedItem.id ? updatedItem : item,
+        );
+
+        this.userCart.set({ ...currentCart, cartItems: updatedCartItems });
+      });
   }
 }
