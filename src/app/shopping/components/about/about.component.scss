@@ -9,9 +9,13 @@
   &__description {
     width: 50%;
     margin: 0 auto;
+    font-family: "Dancing Script", cursive;
+    font-size: 2rem;
   }
 
   &__info {
+    font-family: "Quicksand", sans-serif;
+    font-size: 1.2rem;
     margin-top: 30px;
     display: flex;
     flex-wrap: wrap;

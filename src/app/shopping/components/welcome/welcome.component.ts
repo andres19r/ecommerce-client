@@ -37,32 +37,32 @@ export class WelcomeComponent {
     {
       title: 'Croissant',
       description:
-        'A classic french pastry with a buttery crust and soft interior',
-      price: 3.99,
+        'Un clásico de la pastelería francesa con una corteza mantecosa y un interior suave',
+      price: 5.00,
       img: 'croissant.jpg',
     },
     {
       title: 'Cappuccino',
-      description: 'Rich espresso topped with frothy milk and a touch of art.',
-      price: 4.5,
+      description: 'Un espresso enriquecido con leche espumosa y un toque de arte',
+      price: 4.00,
       img: 'cappuccino.jpg',
     },
     {
       title: 'Cheesecake',
-      description: 'Indulgent and creamy with a hint of vanilla.',
-      price: 5.0,
+      description: 'Indulgente y cremoso con un toque de vainilla',
+      price: 8.0,
       img: 'cheesecake.jpg',
     },
   ];
   reviews: SimpleReview[] = [
     {
       content:
-        "The croissants are to die for! I've never tasted anything so delicious.",
+        "Los croissants están para morirse. Nunca he probado nada tan delicioso",
       author: 'Emily R.',
     },
     {
       content:
-        'A perfect spot for a morning coffee and a sweet treat. Highly recommend!',
+        'Un lugar perfecto para un café por la mañana y un dulce. Muy recomendable',
       author: 'John D.',
     },
   ];
