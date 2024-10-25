@@ -1,5 +1,36 @@
-<h1>Tu carro de compras</h1>
+<section class="cart-view">
+  <h1>Tu carro de compras</h1>
 
-@for (cartItem of cart().cartItems; track cartItem.id) {
-  <app-cart-item [cartItem]="cartItem"/>
-}
+  <div class="cart-view__content">
+    <div class="cart-items">
+      @for (cartItem of cart().cartItems; track cartItem.id) {
+        <app-cart-item [cartItem]="cartItem" />
+      }
+    </div>
+
+    <div class="cart-items__summary">
+      <p class="title">Balance</p>
+      <div class="items-list">
+        @for (cartItem of cart().cartItems; track cartItem.id) {
+          <div class="item">
+            <p class="item__name">
+              {{ cartItem.productName | titlecase }} x {{ cartItem.quantity }}
+            </p>
+            <p class="item__price">
+              {{ cartItem.price * cartItem.quantity | currency }}
+            </p>
+          </div>
+        }
+      </div>
+      <hr />
+      <div class="balance">
+        <p class="balance__title">Total</p>
+        <p class="balance__total">{{ totalBalance() }}</p>
+      </div>
+
+      <p class="btn">
+        <button mat-flat-button>Realizar Compra</button>
+      </p>
+    </div>
+  </div>
+</section>

@@ -13,6 +13,5 @@ import { Category } from '../../interfaces/category.interface';
 })
 export class CatalogComponent {
   private readonly categoryService = inject(CategoryService);
-  categories: Signal<Category[]> = this.categoryService.getAll()
-
+  categories: Signal<Category[]> = this.categoryService.getAll();
 }

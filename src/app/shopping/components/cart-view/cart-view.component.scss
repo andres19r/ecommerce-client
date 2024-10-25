@@ -1,0 +1,42 @@
+.cart-view {
+  margin: 0 auto;
+  width: 90%;
+
+  &__content {
+    display: flex;
+  }
+}
+
+
+.cart-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+
+  &__summary {
+    padding: 20px;
+    background-color: #fbf3ea;
+    width: 700px;
+
+    .title {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .item,
+    .balance {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .balance {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .btn {
+      display: flex;
+      justify-content: end;
+    }
+  }
+}
