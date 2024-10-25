@@ -1,1 +1,3 @@
-export const environment = {};
+export const environment = {
+  baseUrl: "https://node-user-store.onrender.com"
+};
