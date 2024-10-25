@@ -2,25 +2,27 @@
   background: brown;
   height: 50px;
   color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  justify-items: center;
+  align-content: center;
 
   &__title {
-    width: 30%;
-    font-size: 25px;
+    font-size: 30px;
+    font-family: "Playwrite GB S", cursive;
   }
 
   &__menu {
-    width: 50%;
+    align-self: center;
     a {
       margin-right: 15px;
+      color: white;
+      text-decoration: none;
     }
   }
 
   &__cart {
-    width: 20%;
+    align-self: center;
   }
 }
 
