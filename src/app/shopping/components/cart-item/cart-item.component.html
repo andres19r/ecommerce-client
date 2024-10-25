@@ -6,12 +6,12 @@
       <p class="quantity">{{ cartItem().quantity }} items</p>
     </div>
     <div class="cart-item__info__btns">
-      <button mat-mini-fab>
-        <mat-icon>add</mat-icon>
+      <button (click)="updateProduct(cartItem().product, cartItem().quantity - 1)" mat-mini-fab>
+        <mat-icon>remove</mat-icon>
       </button>
       <span>{{ cartItem().quantity }}</span>
-      <button mat-mini-fab>
-        <mat-icon>remove</mat-icon>
+      <button (click)="updateProduct(cartItem().product, cartItem().quantity + 1)" mat-mini-fab>
+        <mat-icon>add</mat-icon>
       </button>
     </div>
   </div>

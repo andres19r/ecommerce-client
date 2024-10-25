@@ -19,7 +19,7 @@ export class CartViewComponent {
   cart: Signal<CartResponse> = this.cartService.getUserCart();
   totalBalance = computed(() => {
     let totalBalance = 0;
-    this.cart().cartItems.forEach((item) => {
+    this.cart()?.cartItems?.forEach((item) => {
       totalBalance += item.price * item.quantity;
     });
     return totalBalance;
