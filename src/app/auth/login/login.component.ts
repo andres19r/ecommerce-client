@@ -4,7 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,8 @@ import { RouterModule } from '@angular/router';
 })
 export class LoginComponent {
   private formBuilder = inject(FormBuilder);
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
 
   loginForm = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
@@ -32,6 +35,12 @@ export class LoginComponent {
     if (this.loginForm.invalid) return;
 
     const { email, password } = this.loginForm.value;
-    console.log(email, password);
+    this.authService.login(email!, password!).subscribe((valid) => {
+      if (valid === true) {
+        this.router.navigateByUrl('/');
+      } else {
+        console.error(valid);
+      }
+    });
   }
 }
