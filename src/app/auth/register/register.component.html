@@ -3,26 +3,26 @@
     <h2>REGISTER</h2>
     <form
       (submit)="onSubmit()"
-      [formGroup]="regiterForm"
+      [formGroup]="registerForm"
       class="register-container__form"
     >
       <p>
         <mat-form-field appearance="outline">
-          <mat-label>First Name</mat-label>
+          <mat-label>Nombre</mat-label>
           <input formControlName="firstName" matInput />
           <mat-icon matIconPrefix>person</mat-icon>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="outline">
-          <mat-label>Last Name</mat-label>
+          <mat-label>Apellido</mat-label>
           <input formControlName="lastName" matInput />
           <mat-icon matIconPrefix>person</mat-icon>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="outline">
-          <mat-label>City</mat-label>
+          <mat-label>Ciudad</mat-label>
           <input formControlName="city" matInput />
           <mat-icon matIconPrefix>location_city</mat-icon>
         </mat-form-field>
@@ -38,7 +38,11 @@
         <mat-form-field appearance="outline">
           <mat-icon matIconPrefix>key</mat-icon>
           <mat-label>Password</mat-label>
-          <input matInput [type]="hide() ? 'password' : 'text'" />
+          <input
+            formControlName="password"
+            matInput
+            [type]="hide() ? 'password' : 'text'"
+          />
           <button
             type="button"
             mat-icon-button
@@ -51,12 +55,12 @@
           </button>
         </mat-form-field>
       </p>
-      <button type="submit" [disabled]="regiterForm.invalid" mat-flat-button>
-        REGISTER
+      <button type="submit" [disabled]="registerForm.invalid" mat-flat-button>
+        REGISTRARSE
       </button>
     </form>
     <div class="register-container__login">
-      <p>Already have an account? <a routerLink="/auth/login">Log In</a></p>
+      <p>Ya tienes una cuenta? <a routerLink="/auth/login">Ingresar</a></p>
     </div>
   </div>
 </section>
