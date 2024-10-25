@@ -14,6 +14,7 @@
 
   &__menu {
     align-self: center;
+
     a {
       margin-right: 15px;
       color: white;
@@ -22,7 +23,13 @@
   }
 
   &__cart {
+    display: flex;
+    gap: 10px;
     align-self: center;
+
+    mat-icon {
+      cursor: pointer;
+
+    }
   }
 }
-

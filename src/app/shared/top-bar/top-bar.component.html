@@ -7,6 +7,7 @@
     <a routerLink="/contact">Contacto</a>
   </div>
   <p class="top-bar__cart">
-    <mat-icon fontIcon="shopping_cart"></mat-icon>
+    <mat-icon routerLink="/cart" fontIcon="shopping_cart"></mat-icon>
+    <mat-icon (click)="logout()" fontIcon="logout"></mat-icon>
   </p>
 </section>
