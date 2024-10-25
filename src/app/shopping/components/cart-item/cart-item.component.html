@@ -1,0 +1,24 @@
+<div class="cart-item">
+  <img class="cart-item__img" src="/assets/{{ cartItem().img }}" alt="" />
+  <div class="cart-item__info">
+    <div class="cart-item__info__text">
+      <p class="title">{{ cartItem().productName | titlecase }}</p>
+      <p class="quantity">{{ cartItem().quantity }} items</p>
+    </div>
+    <div class="cart-item__info__btns">
+      <button mat-mini-fab>
+        <mat-icon>add</mat-icon>
+      </button>
+      <span>{{ cartItem().quantity }}</span>
+      <button mat-mini-fab>
+        <mat-icon>remove</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="cart-item__close">
+    <p>
+      <mat-icon>cancel</mat-icon>
+    </p>
+    <p>{{ cartItem().price | currency }}</p>
+  </div>
+</div>

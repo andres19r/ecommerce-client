@@ -1,1 +1,5 @@
-<p>cart-view works!</p>
+<h1>Tu carro de compras</h1>
+
+@for (cartItem of cart().cartItems; track cartItem.id) {
+  <app-cart-item [cartItem]="cartItem"/>
+}
