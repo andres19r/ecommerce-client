@@ -43,7 +43,6 @@ export class CartService {
       .put<CartItem>(this.baseUrl, body, { headers })
       .subscribe((updatedItem) => {
         const currentCart = this.userCart();
-
         const updatedCartItems = currentCart.cartItems.map((item) =>
           item.id === updatedItem.id ? updatedItem : item,
         );
@@ -61,12 +60,28 @@ export class CartService {
       .delete(`${this.baseUrl}/${productId}`, { headers })
       .subscribe((_) => {
         const currentCart = this.userCart();
-
         const updateCartItems = currentCart.cartItems.filter(
           (item) => item.product !== productId,
         );
 
         this.userCart.set({ ...currentCart, cartItems: updateCartItems });
+      });
+  }
+
+  addProductToCart(productId: string) {
+    const body = { productId, quantity: 1 };
+    const headers = new HttpHeaders().set(
+      'Authorization',
+      'Bearer ' + this.token,
+    );
+
+    return this.http
+      .post<CartItem>(this.baseUrl, body, { headers })
+      .subscribe((updatedItem) => {
+        const currentCart = this.userCart();
+        const updatedCartItems = currentCart.cartItems.concat(updatedItem);
+
+        this.userCart.set({ ...currentCart, cartItems: updatedCartItems });
       });
   }
 }
