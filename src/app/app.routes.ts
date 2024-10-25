@@ -4,10 +4,12 @@ import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './shopping/pages/home/home.component';
 import {
   AboutComponent,
+  CartViewComponent,
   CatalogComponent,
   ContactComponent,
   WelcomeComponent,
 } from './shopping/components';
+import { validateTokenGuard } from './auth/guards/validate-token.guard';
 
 export const routes: Routes = [
   {
@@ -31,6 +33,7 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    canActivate: [validateTokenGuard],
     children: [
       {
         path: '',
@@ -47,6 +50,10 @@ export const routes: Routes = [
       {
         path: 'contact',
         component: ContactComponent,
+      },
+      {
+        path: 'cart',
+        component: CartViewComponent,
       },
       {
         path: '**',

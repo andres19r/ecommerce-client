@@ -41,7 +41,7 @@ export class AuthService {
     return this.http.post<AuthResponse>(url, body).pipe(
       tap((resp) => {
         if (resp.ok) {
-          localStorage.setItem('token', resp.token!);
+          localStorage.setItem('token', resp.token);
         }
       }),
       map((resp) => resp.ok),
@@ -50,11 +50,9 @@ export class AuthService {
   }
 
   validateToken(): Observable<boolean> {
+    const token = localStorage.getItem('token');
     const url = `${this.baseUrl}/refresh`;
-    const headers = new HttpHeaders().set(
-      'Bearer',
-      localStorage.getItem('token') || '',
-    );
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
 
     return this.http.get<AuthResponse>(url, { headers }).pipe(
       map((resp) => {
