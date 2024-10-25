@@ -17,7 +17,7 @@
   </div>
   <div class="cart-item__close">
     <p>
-      <mat-icon>cancel</mat-icon>
+      <mat-icon (click)="removeProduct(cartItem().product)">cancel</mat-icon>
     </p>
     <p>{{ cartItem().price | currency }}</p>
   </div>

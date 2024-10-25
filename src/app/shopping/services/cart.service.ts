@@ -51,4 +51,22 @@ export class CartService {
         this.userCart.set({ ...currentCart, cartItems: updatedCartItems });
       });
   }
+
+  removeCartItem(productId: string) {
+    const headers = new HttpHeaders().set(
+      'Authorization',
+      'Bearer ' + this.token,
+    );
+    return this.http
+      .delete(`${this.baseUrl}/${productId}`, { headers })
+      .subscribe((_) => {
+        const currentCart = this.userCart();
+
+        const updateCartItems = currentCart.cartItems.filter(
+          (item) => item.product !== productId,
+        );
+
+        this.userCart.set({ ...currentCart, cartItems: updateCartItems });
+      });
+  }
 }

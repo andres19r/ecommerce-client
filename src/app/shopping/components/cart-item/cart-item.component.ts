@@ -1,4 +1,4 @@
-import { Component, effect, inject, input, model } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { CartItem } from '../../interfaces/cart.interface';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,7 +18,11 @@ export class CartItemComponent {
 
   constructor() {}
 
-  updateProduct(productId: string, newQuantity: number) {
+  updateProduct(productId: string, newQuantity: number): void {
     this.cartService.updateCartItem(productId, newQuantity);
+  }
+
+  removeProduct(productId: string): void {
+    this.cartService.removeCartItem(productId);
   }
 }
