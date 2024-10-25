@@ -1,7 +1,7 @@
 <section class="catalog">
   <h1>Catálogo</h1>
   <div class="categories">
-    @for (category of categories(); track category) {
+    @for (category of filteredCategories(); track category) {
       <h2>{{ category.name | titlecase }}</h2>
       <div class="categories__cards">
         @for (product of category.products; track product) {
